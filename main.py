@@ -16,12 +16,12 @@ def telegram_bot(token):
 
     @bot.message_handler(commands=['start'])
     def start_message(message):
-        bot.send_message(message.chat.id, "Hi buddy, to see the price type 'price'")
+        bot.send_message(message.chat.id, "Hi buddy, to see the price type '/price'")
 
 
     @bot.message_handler(content_types=["text"])
     def send_text(message):
-        if (message.text.lower() + '/') == '/price':
+        if (message.text.lower()) == '/price':
             try:
                 req = requests.get('https://yobit.net/api/3/ticker/btc_usd')
                 response = req.json()
@@ -43,5 +43,6 @@ def telegram_bot(token):
 
 
 if __name__ == '__main__':
+#   get_data()
     telegram_bot(token)
 
